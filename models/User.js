@@ -38,10 +38,7 @@ UserSchema.pre('save', function(next) {
 
 // Compare the password from the database
 UserSchema.methods.comparePassword = function(password) {
-  return bcrypt.compare(password, this.password, function(err, res) {
-    console.log(res);
-    return res;
-  });
+  return (bcrypt.compareSync(password, this.password));
 };
 
 UserSchema.methods.gravatar = function(size) {
