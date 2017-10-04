@@ -1,0 +1,18 @@
+.signup-form {
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.signup-form > h3 {
+  text-align: center;
+}
+
+.signup-submit-button > button {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.nav-search {
+  width: 400px;
+}
