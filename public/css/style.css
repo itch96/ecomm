@@ -14,5 +14,13 @@
 }
 
 .nav-search {
-  width: 400px;
+  background-color: #e57373;
+}
+
+.parallax-container {
+  height: 400px;
+}
+
+.material-icons, .cart-badge {
+  display: inline-block !important;
 }
