@@ -1,0 +1,33 @@
+<% layout('boilerplate') -%>
+
+<div class="col s12 container">
+  <h2 class="header"><%= product.name %></h2>
+  <form method="post">
+  <div class="card horizontal">
+    <div class="card-image">
+      <img src="<%= product.image %>">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h4><%= product.price %><span class="badge"><%= product.category.name %></span></h4>
+        
+          <div class="row">
+            <input type="hidden" name="quantity" id="quantity" value="1">
+            <a class="btn-floating btn-large waves-effect waves-light red" id="minus"><i class="material-icons">remove</i></a>
+            <a class="btn-flat waves-effect" id="total">1</a>
+            <a class="btn-floating btn-large waves-effect waves-light red" id="plus"><i class="material-icons">add</i></a>
+          </div>
+
+          <input type="hidden" name="product_id" id="quantity-id" value="<%= product._id %>">
+          <input type="hidden" name="priceHidden" id="priceHidden" value="<%= product.price %>">
+          <input type="text" name="item" value="<%= product.name %>">
+          <input type="text" name="priceValue" id="priceValue" value="<%= product.price %>">
+  
+      </div>
+      <div class="card-action">
+          <button type="submit" class="btn waves-effect waves-light"><i class="material-icons left">add_shopping_cart</i> Buy</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>

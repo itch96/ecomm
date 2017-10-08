@@ -1,0 +1,53 @@
+<% layout('boilerplate') -%>
+
+<div class="parallax-container">
+  <div class="parallax"><img src="/images/image.jpg"></div>
+</div>
+<div class="section white">
+  <div class="row container">
+    <h2 class="header">Shop Here</h2>
+    <p class="grey-text text-darken-3 lighten-3">Best shopping experience you will ever get.</p>
+  </div>
+</div>
+
+<div class="row">
+  <% for(var i = 0; i < products.length; i ++) { %>
+    <div class="col s12 m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= products[i].image %>">
+          <span class="card-title"><%= products[i].name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= products[i].category.name %></p>
+          <p><%= products[i].price %></p>
+        </div>
+        <div class="card-action">
+          <a href="/products/<%= products[i]._id %>">Details</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
+
+<ul class="pagination">
+  <% if(currentPage == 1) { %>
+    <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+  <% } else { %>
+    <li class="waves-effect"><a href="/page/<%= currentPage - 1 %>"><i class="material-icons">chevron_left</i></a></li>
+  <% } %>
+
+  <% for(var i = 1; i < pages; i ++) { %>
+    <% if(i == currentPage) { %>
+      <li class="waves-effect active"><a href="/page/<%= i %>"><%= i %></a></li>
+    <% } else { %>
+      <li class="waves-effect"><a href="/page/<%= i %>"><%= i %></a></li>
+    <% } %>
+  <% } %>
+
+  <% if(currentPage == pages - 1) { %>
+    <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
+  <% } else { %>
+    <li class="waves-effect"><a href="/page/<%= currentPage - -1 %>"><i class="material-icons">chevron_right</i></a></li>
+  <% } %>
+</ul>

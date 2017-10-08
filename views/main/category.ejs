@@ -1,0 +1,21 @@
+<% layout('boilerplate') -%>
+
+<div class="row">
+  <% for(var i = 0; i < products.length; i ++) { %>
+    <div class="col s12 m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= products[i].image %>">
+          <span class="card-title"><%= products[i].name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= products[i].category.name %></p>
+          <p><%= products[i].price %></p>
+        </div>
+        <div class="card-action">
+          <a href="/products/<%= products[i]._id %>">Details</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

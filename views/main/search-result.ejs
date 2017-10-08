@@ -1,0 +1,26 @@
+<% layout('boilerplate') -%>
+
+<% if(data.length === 0) { %>
+  <h4>No Products found</h4>
+<% } else { %>
+  <h4>Results for <%= query %></h4>
+  <div class="row">
+    <% for(var i = 0; i < data.length; i ++) { %>
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="<%= data[i]._source.image %>">
+            <span class="card-title"><%= data[i]._source.name %></span>
+          </div>
+          <div class="card-content">
+            <p><%= data[i]._source.category.name %></p>
+            <p><%= data[i]._source.price %></p>
+          </div>
+          <div class="card-action">
+            <a href="/products/<%= data[i]._id %>">Details</a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+<% } %>
