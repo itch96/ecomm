@@ -9,6 +9,10 @@ let Schema = mongoose.Schema;
 let UserSchema = new Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String },
+  
+  facebook: String, 
+  tokens: Array,
+  
   profile: {
     name: { type: String },
     picture: { type: String }
@@ -17,15 +21,15 @@ let UserSchema = new Schema({
   history: [{
     date: { type: Date, default: Date.now },
     paid: { type: Number },
-    item: { type: Schema.Types.ObjectId, }
+    item: { type: Schema.Types.ObjectId, ref: 'Product' }
   }]
 });
 
 // Hash the password before saving
 UserSchema.pre('save', function(next) {
   var user = this;
-  // if(!user.isModified('password')) return next();
-  
+  if(!user.isModified('password')) return next();
+  console.log("password passed before saving: " + user.password);
   bcrypt.genSalt(10, function(err, salt) {
     if(err) {console.log(err); return next(err);}
     bcrypt.hash(user.password, salt, function(err, hash) {
