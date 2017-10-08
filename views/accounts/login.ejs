@@ -1,22 +1,15 @@
 <% layout('boilerplate') -%>
 <div class="row signup-form">
   
-  <% if(errors.length > 0) { %>
+  <% if(message.length > 0) { %>
     <script>
-      Materialize.toast("<%= errors %>", 2000);
+      Materialize.toast("<%= message %>", 2000);
     </script>
   <% } %>
 
-  <h3>Signup Form</h3>
+  <h3>Login Form</h3>
 
   <form class="col s12 m6 offset-m3" method='post'>  
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="name" type="text" class="validate" name="name">
-        <label for="name">Name</label>
-      </div>
-    </div>
-    
     <div class="row">
       <div class="input-field col s12">
         <input id="email" type="email" class="validate" name="email">
@@ -37,11 +30,4 @@
       </button>
     </div>
   </form>
-  <div class="col s12 m6 offset-m3 facebook-button">
-  <hr/>
-  <a href="/auth/facebook" class="btn waves-effect waves-light indigo darken-1" type="submit" name="action">
-    <i class="material-icons right">send</i>
-    Signin with Facebook
-  </a>
-</div>
 </div>

@@ -1,0 +1,43 @@
+<% layout('boilerplate') -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m4">
+      <h3>Your Profile</h3>
+      <div class="col s12">
+        <img src="<%= user.profile.picture %>" alt="<%= user.profile.name %>">
+      </div>
+      <div class="col s12"><b>Name: </b><%= user.profile.name %></div>
+      <div class="col s12"><b>Email: </b><%= user.email %></div>
+      <div class="col s12"><b>Address: </b><%= user.address %></div>
+      <a href="/edit-profile">
+        <button class="btn waves-effect waves-light" name="action">Edit
+          <i class="material-icons right">edit</i>
+        </button>
+      </a>
+    </div>
+    <% if(user.history.length != 0) { %>
+    <div class="col s12 m6 offset-m2">
+      <h3>Your Purchases</h3>
+      <table class="striped centered">
+        <thead>
+          <tr>
+              <th>Date</th>
+              <th>Item</th>
+              <th>Amount Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i = 0; i < user.history.length; i ++) { %>
+            <tr>
+              <td><%= user.history[i].date.getDate() %> - <%= user.history[i].date.getMonth() + 1 %> - <%= user.history[i].date.getFullYear() %></td>
+              <td><%= user.history[i].item.name %></td>
+              <td><%= user.history[i].paid %></td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
